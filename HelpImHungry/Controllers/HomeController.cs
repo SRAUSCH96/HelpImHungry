@@ -9,7 +9,8 @@ using HelpImHungry.Models;
 namespace HelpImHungry.Controllers
 {
     public class HomeController : Controller
-    {[HttpGet]
+    {
+        [HttpGet]
         public IActionResult Index()
         {
 
