@@ -1,1 +1,16 @@
-﻿hello world
+﻿@model HelpImHungry.ViewModels.UserLocationViewModel
+
+
+<h1>What is your location?</h1>
+
+<form asp-controller="Home" asp-action="index" method="post">
+    
+    <div asp-validation-summary="All"></div>
+
+    <div class="form-group">
+        
+        <input class="form-control" asp-for="Location" placeholder="Enter Your Address Here"/>
+    </div>
+    <input type="submit"/>
+    <p>@ViewBag.location</p>
+</form>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HelpImHungry.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -40,7 +41,10 @@ namespace HelpImHungry
         {
             if (env.IsDevelopment())
             {
+                // allows to make calls to api
+                ApiHelper.InitializeClient();
                 app.UseDeveloperExceptionPage();
+
             }
             else
             {
