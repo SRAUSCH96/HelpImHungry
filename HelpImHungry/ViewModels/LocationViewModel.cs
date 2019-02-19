@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace HelpImHungry.ViewModels
 {
-    public class UserLocationViewModel
+    public class LocationViewModel
     {
         [Required]
         public string Location { get; set; }
-
+        public float Lat { get; set; }
+        public float Lng { get; set; }
+        public LocationViewModel() { }
 
     }
 }

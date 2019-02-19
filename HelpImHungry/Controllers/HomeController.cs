@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HelpImHungry.Models;
 using HelpImHungry.ViewModels;
+using Microsoft.Extensions.Logging.Console.Internal;
 
 namespace HelpImHungry.Controllers
 {
@@ -14,31 +15,38 @@ namespace HelpImHungry.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            UserLocationViewModel model = new UserLocationViewModel();
+            LocationViewModel model = new LocationViewModel();
 
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(UserLocationViewModel model)
+        public async Task<IActionResult> Index(LocationViewModel model)
         {
             if (ModelState.IsValid)
             {
-                UserLocation.Location = model.Location;
+                LocationModel UserLocation = new LocationModel { Location = model.Location, };
                 
-                var location = await Geocode.LoadGeocode();
 
-                ViewBag.location = location;
-
-
-
-                
-                
-                
-                return View();
+               UserLocation = await Geocode.LoadGeocode(UserLocation.Location);
+                model.Lat = UserLocation.Lat;
+                return View(model);
             }
+            else
+            {
+                return View(model);
+            }
+                
 
-            return View(model);
+
+
+                
+                
+                
+                
+            
+
+           // return View(model);
 
         
         }

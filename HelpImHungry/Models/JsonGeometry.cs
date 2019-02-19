@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace HelpImHungry.Models
 {
-    public class ApiResults
+    public class JsonGeometry
     {
-        public static UserLocation Results { get; set; }
+        public JsonLocation Geometry { get; set; }
     }
 }
