@@ -27,18 +27,22 @@ namespace HelpImHungry.Controllers
         {
             if (ModelState.IsValid)
             {
-               var UserLocation = await Geocode.LoadGeocode(model.Location);
-               ViewBag.info = (UserLocation.Lat,UserLocation.Lng);
-                {
+                var UserLocation = await GeocodeCall.LoadGeocode(model.Location);
+                var Restaurants = await NearbyRestaurantsCall.LoadRestaurants(UserLocation.Lat, UserLocation.Lng);
+                ViewBag.info = Restaurants[1].Name;
+                
+                    
+                
+                
                    
                     return View();
-                }
+                
 
 
                 
             }
             else
-                {
+                {                
                     return View(model);
                 }
                 
