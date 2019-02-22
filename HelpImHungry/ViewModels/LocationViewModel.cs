@@ -10,8 +10,6 @@ namespace HelpImHungry.ViewModels
     {
         [Required]
         public string Location { get; set; }
-        public float Lat { get; set; }
-        public float Lng { get; set; }
         public LocationViewModel() { }
 
     }

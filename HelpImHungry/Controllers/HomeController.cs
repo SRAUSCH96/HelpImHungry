@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using HelpImHungry.Models;
 using HelpImHungry.ViewModels;
 using Microsoft.Extensions.Logging.Console.Internal;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace HelpImHungry.Controllers
 {
@@ -25,17 +27,20 @@ namespace HelpImHungry.Controllers
         {
             if (ModelState.IsValid)
             {
-                LocationModel UserLocation = new LocationModel { Location = model.Location, };
-                
+               var UserLocation = await Geocode.LoadGeocode(model.Location);
+               ViewBag.info = (UserLocation.Lat,UserLocation.Lng);
+                {
+                   
+                    return View();
+                }
 
-               UserLocation = await Geocode.LoadGeocode(UserLocation.Location);
-                model.Lat = UserLocation.Lat;
-                return View(model);
+
+                
             }
             else
-            {
-                return View(model);
-            }
+                {
+                    return View(model);
+                }
                 
 
 
