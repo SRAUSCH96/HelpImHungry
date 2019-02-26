@@ -25,47 +25,37 @@ namespace HelpImHungry.Controllers
         [HttpPost]
         public async Task<IActionResult> Index(LocationViewModel model)
         {
+            
             if (ModelState.IsValid)
             {
+               
+
                 var UserLocation = await GeocodeCall.LoadGeocode(model.Location);
-                var Restaurants = await NearbyRestaurantsCall.LoadRestaurants(UserLocation.Lat, UserLocation.Lng);
-                ViewBag.info = Restaurants[1].Name;
-                
-                    
-                
-                
-                   
-                    return View();
-                
-
-
-                
+                RestaurantData.Restaurants = await NearbyRestaurantsCall.LoadRestaurants(UserLocation.Lat, UserLocation.Lng);
+                RestaurantData.Randomize();
+                return Redirect("/home/restaurants");
             }
             else
-                {                
-                    return View(model);
-                }
-                
+            {
+                return View(model);
+            }
+        }
 
+        [HttpGet]
+        public IActionResult Restaurants()
+        {
 
-
-                
-                
-                
-                
             
+            ViewBag.info = RestaurantData.Restaurants[1].Name;
 
-           // return View(model);
+            return View(RestaurantData.Restaurants);
+        }
+
+    }
+
+
 
         
-        }
-
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-    }
+        
+    
 }
