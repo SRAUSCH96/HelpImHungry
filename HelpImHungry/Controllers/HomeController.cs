@@ -32,7 +32,7 @@ namespace HelpImHungry.Controllers
 
                 var UserLocation = await GeocodeCall.LoadGeocode(model.Location);
                 RestaurantData.Restaurants = await NearbyRestaurantsCall.LoadRestaurants(UserLocation.Lat, UserLocation.Lng);
-                RestaurantData.Randomize();
+                //RestaurantData.Randomize();
                 return Redirect("/home/restaurants");
             }
             else

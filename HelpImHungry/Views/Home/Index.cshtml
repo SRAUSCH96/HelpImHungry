@@ -1,17 +1,28 @@
 ﻿@model HelpImHungry.ViewModels.LocationViewModel
 
 
-<h1>What is your location?</h1>
+<div class="container1">
 
-<form asp-controller="Home" asp-action="index" method="post">
-    
-    <div asp-validation-summary="All"></div>
-
-    <div class="form-group">
-        
-        <input class="form-control" asp-for="Location" placeholder="Enter Your Address Here"/>
+    <div id="helpimhungry" class="row">
+        HELP
     </div>
-    <input type="submit"/>
-    <p>@ViewBag.info</p>
+    <div id="helpimhungry" class="row">
+        I'M
+    </div>
+    <div id="helpimhungry" class="row">
+        Hungry
+    </div>
+
+
+    <div class="container2">
+        <form asp-controller="Home" asp-action="index" method="post">
+            <input class="form-control" asp-for="Location" placeholder="Enter Your Location" />
+            <div asp-validation-summary="All" ></div>
+            
+                <input class="findfood" type="submit" value="Find Food" />
+       
+        </form>
+    </div>
     
-</form>
+
+</div>

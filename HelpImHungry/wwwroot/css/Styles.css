@@ -1,0 +1,43 @@
+﻿body {
+    background-color: black;
+}
+
+.containter{
+    display:grid;
+    
+}
+
+.container1{
+    display:grid;
+    justify-content:center;
+}
+
+ #helpimhungry{
+    
+    
+    font-size: 60px;
+    font-family: "Calibri";
+    color: #fff;
+    text-shadow: 0 0 5px #2847db, 0 0 10px #2847db, 0 0 20px #3648b5, 0 0 30px #3648b5, 0 0 40px #3648b5, 0 0 55px #3648b5, 0 0 75px #3648b5;
+    text-align: center;
+}
+
+
+
+.findfood {
+    
+    
+    text-align:center;
+    background-color: black; 
+    border: 3px solid #fff;
+    color: #fff;
+    padding: 8px 15px;    
+    text-decoration: none;    
+    font-size: 16px;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
+}
+
+.form-control{
+    
+    text-align:center;
+}
