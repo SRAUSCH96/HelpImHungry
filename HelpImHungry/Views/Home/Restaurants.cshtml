@@ -2,19 +2,36 @@
 
 <div class="row">
     <div class="col-sm-8">
-        @{ var showDiv = 1;
 
+        <div class="restaurant1">
+            <h2>@RestaurantData.Restaurants[0].Name</h2>
+            <h5>@RestaurantData.Restaurants[0].Vicinity</h5>
+            @{ if (RestaurantData.Restaurants[0].Opening_hours != null)
+                {
+                    if (RestaurantData.Restaurants[0].Opening_hours.Open_now == true)
+                    {<h5>Now Open: Yes</h5> }
+                    if (RestaurantData.Restaurants[0].Opening_hours.Open_now == false)
+                    { <h5>Now Open: No</h5>}
+                }
+            }
+        </div>
+
+        @for (int r = 0; r <= RestaurantData.Restaurants.Length - 1; r++)
+        {
+            <div class="restaurant">
+                <h2>@RestaurantData.Restaurants[r].Name</h2>
+                <h5>@RestaurantData.Restaurants[r].Vicinity</h5>
+                @{ if (RestaurantData.Restaurants[r].Opening_hours != null)
+                    {
+                        if (RestaurantData.Restaurants[r].Opening_hours.Open_now == true)
+                        {<h5>Now Open: Yes</h5> }
+                        if (RestaurantData.Restaurants[r].Opening_hours.Open_now == false)
+                        { <h5>Now Open: No</h5>}
+                    }
+                }
+            </div>
         }
-        <h2 class="rdata">@RestaurantData.Restaurants[showDiv].Name</h2>
-        <h5>@RestaurantData.Restaurants[showDiv].Vicinity</h5>
-        @{ if (RestaurantData.Restaurants[showDiv].Opening_hours != null)
-            {
-                if (RestaurantData.Restaurants[showDiv].Opening_hours.Open_now == true)
-                {<h5>Now Open: Yes</h5> }
-                if (RestaurantData.Restaurants[showDiv].Opening_hours.Open_now == false)
-                { <h5>Now Open: No</h5>}
-            }
-            }
+
         <h5></h5>
         <h5></h5>
         <div class="fakeimg">GoogleMap</div>
@@ -42,8 +59,10 @@
         <br><br>
         <div class="fakeimg">possible list of restaurants </div>
         <br />
-        <button type="button" onclick="" class="btn btn-secondary">Prev</button>
-        <button id="nextbutton"type="button" onclick="Function" class="btn btn-secondary">next</button>
+        <button type="button" onclick="showPrev();" class="btn btn-secondary">Prev</button>
+        <button id="nextbutton"type="button" onclick="showNext();" class="btn btn-secondary">Next</button>
 
     </div>
 </div>
+
+<script src="~/js/site.js"></script>
