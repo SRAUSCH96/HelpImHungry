@@ -2,8 +2,21 @@
 
 <div class="row">
     <div class="col-sm-8">
-        <h2>Restaurant Name</h2>
-        <h5>Some Details</h5>
+        @{ var showDiv = 1;
+
+        }
+        <h2 class="rdata">@RestaurantData.Restaurants[showDiv].Name</h2>
+        <h5>@RestaurantData.Restaurants[showDiv].Vicinity</h5>
+        @{ if (RestaurantData.Restaurants[showDiv].Opening_hours != null)
+            {
+                if (RestaurantData.Restaurants[showDiv].Opening_hours.Open_now == true)
+                {<h5>Now Open: Yes</h5> }
+                if (RestaurantData.Restaurants[showDiv].Opening_hours.Open_now == false)
+                { <h5>Now Open: No</h5>}
+            }
+            }
+        <h5></h5>
+        <h5></h5>
         <div class="fakeimg">GoogleMap</div>
         <ul class="nav nav-pills flex-column">
             <li class="nav-item">
@@ -14,51 +27,23 @@
     <div class="col-sm-4">
 
         <h5>Filters</h5>
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary active">
+                <input type="radio" name="options"  autocomplete="off" checked> Random
+            </label>
+            <label class="btn btn-secondary">
+                <input type="radio" name="options"  autocomplete="off"> Distance
+            </label>    
+        </div>
+
+        
+        
         <br><br>
         <div class="fakeimg">possible list of restaurants </div>
-        <h5>prev and next buttons</h5>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container">
-    <div class="row">
-        <div col="col-sm-6">
-
-        </div>
-        <ul>
-            @for (int r = 0; r <= RestaurantData.Restaurants.Length - 1; r++)
-            {
-                <li>@RestaurantData.Restaurants[r].Name</li>}
-        </ul>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <button type="button" onclick="">Prev</button>
-        </div>
-        <div class="col-md-6">
-            <button type="button" onclick="">next</button>
-        </div>
+        <br />
+        <button type="button" onclick="" class="btn btn-secondary">Prev</button>
+        <button id="nextbutton"type="button" onclick="Function" class="btn btn-secondary">next</button>
 
     </div>
 </div>

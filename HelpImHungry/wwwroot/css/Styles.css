@@ -1,6 +1,8 @@
 ﻿body {
     background-color: black;
+    color:white;
 }
+
 
 .containter{
     display:grid;
@@ -10,6 +12,10 @@
 .container1{
     display:grid;
     justify-content:center;
+}
+
+#nextbutton{
+    align-self:flex-end;
 }
 
  #helpimhungry{
@@ -22,8 +28,7 @@
     text-align: center;
 }
 
-
-
+ 
 .findfood {
     
     justify-content:center;
