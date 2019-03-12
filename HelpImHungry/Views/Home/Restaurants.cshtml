@@ -14,6 +14,7 @@
                     { <h5>Now Open: No</h5>}
                 }
             }
+            <h5>Rating: @RestaurantData.Restaurants[0].Rating.ToString()</h5>
         </div>
 
         @for (int r = 0; r <= RestaurantData.Restaurants.Length - 1; r++)
@@ -28,7 +29,8 @@
                         if (RestaurantData.Restaurants[r].Opening_hours.Open_now == false)
                         { <h5>Now Open: No</h5>}
                     }
-                }
+                }@if (RestaurantData.Restaurants[r].Rating > 0)
+                {<h5>Rating: @RestaurantData.Restaurants[r].Rating.ToString()</h5>}
             </div>
         }
 
@@ -42,25 +44,30 @@
         <hr class="d-sm-none">
     </div>
     <div class="col-sm-4">
-
+         
         <h5>Filters</h5>
 
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-secondary active">
-                <input type="radio" name="options"  autocomplete="off" checked> Random
-            </label>
-            <label class="btn btn-secondary">
-                <input type="radio" name="options"  autocomplete="off"> Distance
-            </label>    
-        </div>
+        <form asp-controller="Home" asp-action="restaurants" method="post">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary">
+                    <input type="radio" name="option" value="random" autocomplete="off"> Random
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="option" value="distance" autocomplete="off"> Distance
+                </label>
+            </div>
+            
+            <button type="submit" class="applybutton" >Apply</button>
+           
+        </form>
 
         
         
         <br><br>
         <div class="fakeimg">possible list of restaurants </div>
         <br />
-        <button type="button" onclick="showPrev();" class="btn btn-secondary">Prev</button>
-        <button id="nextbutton"type="button" onclick="showNext();" class="btn btn-secondary">Next</button>
+        <button type="button" onclick="showPrev();" class="btn btn-outline-primary">Prev</button>
+        <button id="nextbutton"type="button" onclick="showNext();" class="btn btn-outline-primary">Next</button>
 
     </div>
 </div>

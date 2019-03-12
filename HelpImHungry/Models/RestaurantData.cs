@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace HelpImHungry.Models
 {
-    public class RestaurantData
+    public static class RestaurantData
     {
         public static Result[] Restaurants { get; set; }
-        
+        public static Result[] RandomRestaurants { get; set; }
+        public static Result[] DistanceRestaurants { get; set; }
+
         public static void Randomize()
         {
             Random r = new Random();
-           RestaurantData.Restaurants = RestaurantData.Restaurants.OrderBy(x => r.Next()).ToArray();
+           RestaurantData.RandomRestaurants = RestaurantData.Restaurants.OrderBy(x => r.Next()).ToArray();
                        
         // TO REMOVE INVALID LOCATIONS
             //for (int i = 0; i < Restaurants.Count(); i++)

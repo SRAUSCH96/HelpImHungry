@@ -32,7 +32,9 @@ namespace HelpImHungry.Controllers
 
                 var UserLocation = await GeocodeCall.LoadGeocode(model.Location);
                 RestaurantData.Restaurants = await NearbyRestaurantsCall.LoadRestaurants(UserLocation.Lat, UserLocation.Lng);
-                //RestaurantData.Randomize();
+                RestaurantData.DistanceRestaurants = RestaurantData.Restaurants;
+                RestaurantData.Randomize();
+                RestaurantData.Restaurants = RestaurantData.RandomRestaurants;
                 return Redirect("/home/restaurants");
             }
             else
@@ -46,7 +48,25 @@ namespace HelpImHungry.Controllers
         {
 
             
-            ViewBag.info = RestaurantData.Restaurants[1].Name;
+            
+
+            return View(RestaurantData.Restaurants);
+        }
+
+        [HttpPost]
+        public IActionResult Restaurants(string option)
+        {
+            if (option == "random") {
+                RestaurantData.Restaurants = RestaurantData.RandomRestaurants;
+                return View(RestaurantData.Restaurants);
+            }
+            if (option == "distance")
+            {
+                RestaurantData.Restaurants = RestaurantData.DistanceRestaurants;
+                return View(RestaurantData.Restaurants);
+            }
+
+            
 
             return View(RestaurantData.Restaurants);
         }
