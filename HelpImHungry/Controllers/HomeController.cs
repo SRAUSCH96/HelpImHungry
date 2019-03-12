@@ -57,6 +57,7 @@ namespace HelpImHungry.Controllers
         public IActionResult Restaurants(string option)
         {
             if (option == "random") {
+                RestaurantData.Randomize();
                 RestaurantData.Restaurants = RestaurantData.RandomRestaurants;
                 return View(RestaurantData.Restaurants);
             }

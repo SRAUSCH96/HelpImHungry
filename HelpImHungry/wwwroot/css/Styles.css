@@ -20,6 +20,9 @@ h5 {
     
 }
 
+#map {
+    height: 100%;
+}
 .container1{
     display:grid;
     justify-content:center;

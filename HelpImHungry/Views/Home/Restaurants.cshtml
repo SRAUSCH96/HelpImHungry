@@ -19,6 +19,10 @@
 
         @for (int r = 0; r <= RestaurantData.Restaurants.Length - 1; r++)
         {
+
+        <div id="@r" style="display:none" >@RestaurantData.Restaurants[r].Geometry.Location.Lat</div>
+        <div id="@r lng" style="display:none">@RestaurantData.Restaurants[r].Geometry.Location.Lng</div>
+
             <div class="restaurant">
                 <h2>@RestaurantData.Restaurants[r].Name</h2>
                 <h5>@RestaurantData.Restaurants[r].Vicinity</h5>
@@ -34,17 +38,19 @@
             </div>
         }
 
-        <h5></h5>
-        <h5></h5>
-        <div class="fakeimg">GoogleMap</div>
-        <ul class="nav nav-pills flex-column">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Possible Link</a>
-        </ul>
+            <script src="~/js/site.js"></script>
+        <div id="map"></div>
+        
+        
+        
+
+
+        
+        <p>&copy; 2019 - HelpImHungry</p>
         <hr class="d-sm-none">
     </div>
     <div class="col-sm-4">
-         
+
         <h5>Filters</h5>
 
         <form asp-controller="Home" asp-action="restaurants" method="post">
@@ -56,20 +62,27 @@
                     <input type="radio" name="option" value="distance" autocomplete="off"> Distance
                 </label>
             </div>
-            
-            <button type="submit" class="applybutton" >Apply</button>
-           
+
+            <button type="submit" class="applybutton">Apply</button>
+
         </form>
-
-        
-        
-        <br><br>
-        <div class="fakeimg">possible list of restaurants </div>
         <br />
-        <button type="button" onclick="showPrev();" class="btn btn-outline-primary">Prev</button>
-        <button id="nextbutton"type="button" onclick="showNext();" class="btn btn-outline-primary">Next</button>
-
+        <button type="button" onclick="showPrev(); initMap();" class="btn btn-outline-primary">Prev</button>
+        <button id="nextbutton" type="button" onclick="showNext(); initMap();" class="btn btn-outline-primary">Next</button>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        
     </div>
 </div>
 
-<script src="~/js/site.js"></script>
+
